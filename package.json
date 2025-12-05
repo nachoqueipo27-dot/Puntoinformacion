@@ -1,25 +1,28 @@
 {
-  "name": "punto-de-información---inventario-y-eventos",
-  "private": true,
-  "version": "0.0.0",
+  "name": "punto-informacion",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "start": "node server.js"
   },
   "dependencies": {
-    "lucide-react": "^0.554.0",
-    "react-dom": "^19.2.0",
-    "react": "^19.2.0",
-    "d3": "^7.9.0",
-    "recharts": "^3.5.0",
-    "idb": "^8.0.0"
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.344.0",
+    "recharts": "^2.12.0",
+    "d3": "^7.8.5",
+    "idb": "^8.0.0",
+    "@supabase/supabase-js": "^2.39.7"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.4",
+    "typescript": "^5.3.3",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@types/d3": "^7.4.3"
   }
 }

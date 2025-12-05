@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, useRef } from 'react';
 import { Product, Movement, Baptism, ChildPresentation, MovementType, PendingStatus, User, AppEvent, ProductType, AppSettings, ModuleConfig, Loan } from './types';
 import { dbAPI } from './db';
@@ -27,7 +28,6 @@ interface AppContextType {
   updateLoanStatus: (id: string, status: PendingStatus) => Promise<void>;
   removeLoan: (id: string) => Promise<void>;
   addEvent: (event: AppEvent) => Promise<void>;
-  editEvent: (event: AppEvent) => Promise<void>;
   removeEvent: (id: string) => Promise<void>;
   updateBaptismStatus: (id: string, status: PendingStatus) => Promise<void>;
   updatePresentationStatus: (id: string, status: PendingStatus) => Promise<void>;
@@ -389,12 +389,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     notifySync();
   };
 
-  const editEvent = async (event: AppEvent) => {
-    await dbAPI.updateEvent(event);
-    setEvents(prev => prev.map(e => e.id === event.id ? event : e));
-    notifySync();
-  };
-
   const removeEvent = async (id: string) => {
     await dbAPI.deleteEvent(id);
     setEvents(prev => prev.filter(e => e.id !== id));
@@ -429,9 +423,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const updateBaptismStatus = async (id: string, status: PendingStatus) => {
     const baptism = baptisms.find(b => b.id === id);
     if (baptism) {
-      // Logic: If moving TO completed, set date. If moving TO pending (from completed), CLEAR date (null).
-      const completedAt = status === PendingStatus.NO ? new Date().toISOString() : null;
-      
+      const completedAt = status === PendingStatus.NO ? new Date().toISOString() : undefined;
       const updatedBaptism = { ...baptism, pending: status, completedAt };
       await dbAPI.updateBaptism(updatedBaptism);
       setBaptisms(prev => prev.map(b => b.id === id ? updatedBaptism : b));
@@ -487,7 +479,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       updateLoanStatus,
       removeLoan,
       addEvent,
-      editEvent,
       removeEvent,
       updateSettings,
       settingsSaveStatus,

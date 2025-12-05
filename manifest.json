@@ -8,14 +8,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1048/1048927.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/1048/1048927.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjNGY0NmU1Ij48cGF0aCB0cmFuc2Zvcm09InJvdGF0ZSgwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMjQwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PC9nPjwvc3ZnPg==",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }

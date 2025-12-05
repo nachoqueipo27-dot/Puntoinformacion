@@ -4,23 +4,161 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2563eb" />
-    <meta name="description" content="Sistema de gestión de inventario y eventos" />
+    <meta name="description" content="Sistema de gestión de inventario y eventos para Punto de Información - Origen Iglesia. Control de stock, movimientos y registros." />
+    <meta name="keywords" content="inventario, iglesia, gestión, stock, eventos, react" />
+    <meta name="author" content="Origen Iglesia" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Origen Iglesia - Punto de Información" />
+    <meta property="og:description" content="Aplicación de gestión de inventario y eventos." />
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/1048/1048927.png" />
+    
+    <!-- PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="PuntoInfo" />
+    <meta name="apple-mobile-web-app-title" content="Origen Info" />
     
-    <title>Punto de Información</title>
+    <title>Origen Iglesia - Punto de Información</title>
     
     <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048927.png" />
+    <!-- App Logo (Indigo-600) as SVG Data URI -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjNGY0NmU1Ij48cGF0aCB0cmFuc2Zvcm09InJvdGF0ZSgwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMjQwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PC9nPjwvc3ZnPg==" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjNGY0NmU1Ij48cGF0aCB0cmFuc2Zvcm09InJvdGF0ZSgwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoMjQwIDEwMCAxMDApIHRyYW5zbGF0ZSg5MCAxNSkgc2NhbGUoMC42KSIgZD0iTSAxMTIgNTggUSAxNDAgMTggMTgyIDU4IEEgNDUgNDUgMCAwIDEgMTM0IDEzNCBRIDExNCAxMDEgMTEyIDU4IFoiIC8+PC9nPjwvc3ZnPg==" />
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                850: '#1e293b', 
+                900: '#000000', // High contrast (Black) for light mode text
+                950: '#020617',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #f8fafc; /* Slate 50 */
         overscroll-behavior-y: none; /* Previene el rebote en pull-to-refresh en móviles */
+      }
+      /* Custom Scrollbar for Webkit */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(156, 163, 175, 0.5);
+        border-radius: 20px;
+      }
+      .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(71, 85, 105, 0.5);
+      }
+      
+      /* Ensure select options have good contrast in light mode */
+      select option {
+        background-color: white;
+        color: black;
+      }
+      .dark select option {
+        background-color: #1e293b;
+        color: white;
+      }
+
+      /* --- FIXED PRINT STYLES --- */
+      @media print {
+        @page { margin: 0.5cm; size: landscape; }
+        
+        /* 1. Reset Global Layout */
+        body, #root, html { 
+            background-color: white !important; 
+            color: black !important; 
+            height: auto !important; 
+            width: 100% !important; 
+            margin: 0 !important; 
+            padding: 0 !important;
+            overflow: visible !important;
+        }
+
+        /* 2. Hide UI Elements */
+        aside, /* Sidebar */
+        header, /* Mobile Header */
+        nav, 
+        button, /* Hide all buttons */
+        .no-print, /* Explicit class */
+        .lg\:hidden, /* Mobile elements */
+        input, select, /* Hide inputs usually */
+        .fixed /* Hide fixed elements */
+        { 
+            display: none !important; 
+        }
+
+        /* 3. Flatten the React App Layout Structure 
+           This targets the nested divs in App.tsx that cause clipping 
+        */
+        main, 
+        div[class*="overflow"], 
+        div[class*="h-screen"], 
+        div[class*="h-full"], 
+        div[class*="flex-1"] {
+            display: block !important; /* Kill Flexbox */
+            height: auto !important;
+            min-height: auto !important;
+            width: 100% !important;
+            overflow: visible !important; /* Kill Scrollbars */
+            position: static !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: white !important;
+        }
+
+        /* 4. Content Specifics */
+        .max-w-6xl, .max-w-5xl, .max-w-7xl {
+            max-width: none !important;
+            width: 100% !important;
+        }
+
+        /* Force Charts Visibility */
+        .recharts-responsive-container {
+            width: 100% !important;
+            height: 350px !important; /* Give fixed height to charts on paper */
+            page-break-inside: avoid;
+        }
+        
+        /* Force Background Graphics */
+        * { 
+            -webkit-print-color-adjust: exact !important; 
+            print-color-adjust: exact !important; 
+        }
+
+        /* Prevent Page Breaks inside cards */
+        .print-break-inside, .bg-white, .rounded-3xl {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        /* Typography fixes for print */
+        p, h1, h2, h3, h4, span, div {
+            color: black !important;
+            text-shadow: none !important;
+        }
+        
+        /* Restore Date Inputs just for display if needed, but usually better to hide */
+        input[type="date"] {
+            display: none !important;
+        }
       }
     </style>
   <script type="importmap">
@@ -32,12 +170,20 @@
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "d3": "https://aistudiocdn.com/d3@^7.9.0",
     "recharts": "https://aistudiocdn.com/recharts@^3.5.0",
-    "idb": "https://aistudiocdn.com/idb@^8.0.0"
+    "idb": "https://aistudiocdn.com/idb@^8.0.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "url": "https://aistudiocdn.com/url@^0.11.4",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.86.0"
   }
 }
 </script>
 </head>
-  <body>
+  <body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 export enum ProductType {
   BUZO = 'Buzos',
   REMERA = 'Remeras',
@@ -33,26 +34,88 @@ export enum PendingStatus {
 
 export interface Baptism {
   id: string;
-  fullName: string;
+  firstName?: string; // Nuevo campo opcional
+  lastName?: string;  // Nuevo campo opcional
+  fullName: string;   // Mantenemos por compatibilidad y display
   email: string;
   phone: string;
   pending: PendingStatus;
+  createdAt?: string; 
+  completedAt?: string | null; // Allow null to clear date
 }
 
 export interface ChildPresentation {
   id: string;
+  childName: string;
   motherName: string;
   fatherName: string;
   email: string;
   phone: string;
   pending: PendingStatus;
+  scheduledDate?: string; 
+  createdAt?: string; 
+  completedAt?: string; 
+}
+
+export interface Loan {
+  id: string;
+  borrowerName: string;
+  productType: ProductType;
+  size: string;
+  loanDate: string; 
+  returnDate?: string; 
+  status: PendingStatus; 
+}
+
+export interface AppEvent {
+  id: string;
+  name: string;
+  link: string;
+  createdAt: string;
+}
+
+export type UserRole = 'ADMIN' | 'USER' | 'MODERATOR';
+
+export interface User {
+  username: string;
+  password: string; 
+  role: UserRole;
+  fullName: string;
+  createdAt: string;
+}
+
+export interface ModuleConfig {
+  enabled: boolean;
+  label: string; 
+  subLabel: string; 
+  color: string; 
+}
+
+export interface AppSettings {
+  appName: string;
+  appSubtitle: string;
+  primaryColor: string;
+  logoUrl?: string; 
+  inventoryAlertThreshold: number; 
+  enabledModules: {
+    inventory: ModuleConfig;
+    movements: ModuleConfig;
+    search: ModuleConfig;
+    events: ModuleConfig;
+    baptisms: ModuleConfig;
+    presentations: ModuleConfig;
+    loans: ModuleConfig; 
+  };
 }
 
 export type ViewState = 
-  | 'DASHBOARD' 
+  | 'PANEL' 
   | 'NEW_PRODUCT' 
   | 'MOVEMENTS' 
   | 'INVENTORY' 
   | 'BAPTISMS' 
   | 'PRESENTATIONS' 
-  | 'SEARCH';
+  | 'LOANS'
+  | 'EVENTS'
+  | 'SEARCH'
+  | 'ADMIN_PANEL';
